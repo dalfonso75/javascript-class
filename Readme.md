@@ -18,6 +18,10 @@ Corre directamente en la etapa de Runtime, sin una etapa de compilación previa.
 
 JavaScript permite declarar (por ejemplo) variables cuyo valor (y tipo) solo se conocerá al momento de su ejecución en función de las condiciones dadas al momento de correrlo en un entorno real. En cambio, los lenguajes estáticos no compilarán en código ejecutable a menos que todos los valores (o tipos de valores) se conozcan por adelantado.
 
+let foo = 42;    // foo ahora es un número
+foo     = 'bar'; // foo ahora es un string
+foo     = true;  // foo ahora es un booleano
+
 #### ¿Débilmente tipado?
 
 Se pueden hacer operaciones entre tipos distintos de datos (enteros con strings, booleanos con enteros, etc).
@@ -98,3 +102,71 @@ function app() {
 }
 app();
 ```
+#### ¿Qué imprime ésto en pantalla?
+```javascript
+console.log(mivariable)
+var mivariable = 'hola';
+```
+Ésto imprime undefined en pantalla.
+¿Por qué? porque Javascript, cuando encuentra la palabra reservada “var”, lo que hace es mover la declaración de la variable al inicio (ésto se conoce como hoisting). En otras palabras, Javascript traduce (internamente) el código que vimos, al siguiente:Ésto imprime undefined en pantalla. ¿Por qué? porque Javascript, cuando encuentra la palabra reservada “var”, lo que hace es mover la declaración de la variable al inicio (ésto se conoce como hoisting). En otras palabras, Javascript traduce (internamente) el código que vimos, al siguiente:
+```javascript
+var mivariable
+console.log(mivariable)
+mivariable = 'hola';
+```
+Como todas las variables a las que no se les asigna nada se crean con el valor undefined, lo que se termina imprimiendo en la consola es undefined.
+
+
+#### ¿Cuales son los tipos de datos en JavaScript?
+- Seis tipos de datos primitivos, controlados por el operador typeof
+  - Undefined: typeof instance === "undefined"
+  - Boolean: typeof instance === "boolean"
+  - Number: typeof instance === "number"
+  - String: typeof instance === "string"
+  - BigInt: typeof instance === "bigint"
+  - Symbol: typeof instance === "symbol"
+- Null: typeof instance === "object". Tipo primitivo especial que tiene un uso adicional para su valor: si el objeto no se hereda, se muestra null;
+- Object: typeof instance === "object". Tipo estructural especial que no es de datos pero para cualquier instancia de objeto construido que también se utiliza como estructuras de datos: new Object, new Array, new Map, new Set, new WeakMap, new WeakSet, new Date y casi todo lo hecho con la palabra clave new;
+- Function: una estructura sin datos, aunque también responde al operador typeof: typeof instance === "function". Esta simplemente es una forma abreviada para funciones, aunque cada constructor de funciones se deriva del constructor Object.
+#### ¿Cuál es la diferencia entre los operadores (==), (===), (!=)?
+
+- Igualdad (==) Verifica la igualdad de dos expresiones sin tener en cuenta el tipo de dato.
+
+- Igualdad estricta (===) Hace lo mismo que el anterior, pero verificando también que coincidan los tipos de datos.
+
+- Desigualdad (!=) Funciona de la misma forma que la igualdad, pero negándola.
+
+#### ¿Cuál es la diferencia entre null y undefined?
+
+- El valor null es un literal de Javascript que representa intencionalmente un valor nulo o "vacío". Es uno de los valores primitivos de Javascript.
+
+- Undefined Es el valor por default que se le asigna a una variable que esta sin definir aun. Aunque también existe una propiedad global "undefined" que representa uno de los valores primitivos de JS.
+
+#### ¿Cuál es la diferencia entre sincronismo y asincronismo?
+
+- En un código síncrono cada operación se hace de una vez, bloqueando el flujo de ejecución de la siguiente mientras se espera una respuesta, cuando esta se procesa pasa a la siguiente operación y así sucesivamente..
+
+- Un código asíncrono no espera a las instrucciones diferidas y continúa con su ejecución. Es decir, el código asíncrono se ejecutará sin necesidad que el código anterior haya completado su tarea.
+
+#### ¿Qué es el DOM?
+
+El DOM (Document Object Model) es la estructura de objetos que genera el navegador cuando se carga un documento y que puede ser manipulada con JS.
+
+#### ¿Qué es una promesa en Javascript?
+
+Una promesa es un objeto que representa la terminación o error de un evento asincrónico.
+
+#### ¿Qué es un callback?
+
+Un callback es una función (callback) que la pasás a otra función como parámetro. El callback se ejecuta cuando la funcion principa finalice.
+
+#### ¿Qué imprime ésto en pantalla y por qué?
+
+```javascript
+console.log(1);
+setTimeout(function () {
+  console.log(2);
+}, 0);
+console.log(3);
+```
+¿Por qué? Porque setTimeout es una función asincrónica, esto significa que se ejecuta “más tarde”. Cuando Javascript encuentra una función asincrónica la coloca en una cola de “cosas asincrónicas” y sigue ejecutando el resto del código que le falte, es por eso que se imprime 1 y luego 3. Cuando termina de ejecutar el código principal, revisa esa cola de cosas asincrónicas y, si hay algo para ejecutar, lo ejecuta, en nuestro ejemplo ejecuta setTImeout. Es por eso que finalmente termina imprimiendo 2.

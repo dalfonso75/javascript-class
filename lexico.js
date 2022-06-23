@@ -6,6 +6,9 @@ function printNumber() {
 function app() {
   const number = 5;
   printNumber();
+  // function printNumber() {
+  //   console.log(number);
+  // }
 }
 
 app();
