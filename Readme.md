@@ -151,15 +151,12 @@ Como todas las variables a las que no se les asigna nada se crean con el valor u
 #### ¿Qué es el DOM?
 
 El DOM (Document Object Model) es la estructura de objetos que genera el navegador cuando se carga un documento y que puede ser manipulada con JS.
-
-#### ¿Qué es una promesa en Javascript?
-
-Una promesa es un objeto que representa la terminación o error de un evento asincrónico.
-
 #### ¿Qué es un callback?
 
 Un callback es una función (callback) que la pasás a otra función como parámetro. El callback se ejecuta cuando la funcion principa finalice.
+#### ¿Qué es una promesa en Javascript?
 
+Una promesa es un objeto que representa la terminación o error de un evento asincrónico.
 #### ¿Qué imprime ésto en pantalla y por qué?
 
 ```javascript

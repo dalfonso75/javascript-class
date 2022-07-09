@@ -1,7 +1,7 @@
 console.log(1);
 setTimeout(function () {
   console.log(2);
-}, 0.15);
+}, 0.2);
 setTimeout(function () {
   console.log(3);
 }, 0.1);
